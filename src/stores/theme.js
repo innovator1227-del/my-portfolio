@@ -40,7 +40,7 @@ export const themes = {
     pattern: {
       enabled: true,
 
-      glow: "pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_90%_10%,rgba(20,174,166,0.18),transparent_40%),radial-gradient(circle_at_15%_85%,rgba(10,144,156,0.10),transparent_35%)]",
+      glow: "pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_90%_10%,rgba(20,174,166,0.7),transparent_30%),radial-gradient(circle_at_15%_85%,rgba(10,144,156,0.55),transparent_30%)]",
 
       gradient:
         "pointer-events-none absolute inset-0 bg-[linear-gradient(-40deg,transparent_28%,rgba(100,134,196,0.12)_40%,transparent_43%)]",

@@ -3,6 +3,7 @@ import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Theme from "../Theme";
 import ThemeChanger from "../ThemeChanger";
+import { motion } from "framer-motion";
 
 const Header = ({ heroMenu }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,7 +19,22 @@ const Header = ({ heroMenu }) => {
           >
             <FaBars size={20} />
           </button>
-          <h1 className="font-bold text-2xl text-green-600">Tebie Tegenew</h1>
+          <button className="hover:scale-105 transition-all duration-100 hover:translate-x-0.5 cursor-pointer">
+            <motion.h1
+              animate={{
+                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+              }}
+              transition={{
+                duration: 5,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+              className="bg-linear-to-r from-green-700 via-amber-600 to-blue-700 bg-[length:200%_auto] bg-clip-text text-2xl font-bold text-transparent"
+            >
+              Tebie Tegenew
+            </motion.h1>
+          </button>
+
           {/* Desktop navigation */}
           <nav className="hidden items-center gap-2 md:flex">
             {heroMenu.map((item) => (
