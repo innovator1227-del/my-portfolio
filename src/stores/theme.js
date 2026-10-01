@@ -20,7 +20,7 @@ export const themes = {
       gradient:
         "pointer-events-none absolute inset-0 bg-[linear-gradient(-40deg,transparent_28%,rgba(100,134,196,0.05)_40%,transparent_43%)]",
 
-      dots: "pointer-events-none absolute inset-0 bg-[radial-gradient(rgba(71,85,105,0.10)_1px,transparent_1px)] bg-[size:18px_18px] opacity-40",
+      dots: "pointer-events-none absolute inset-0 bg-[radial-gradient(rgba(71,85,105,0.10)_1px,transparent_1px)] bg-[size:18px_18px] opacity-70",
     },
   },
   dark: {
@@ -45,7 +45,7 @@ export const themes = {
       gradient:
         "pointer-events-none absolute inset-0 bg-[linear-gradient(-40deg,transparent_28%,rgba(100,134,196,0.12)_40%,transparent_43%)]",
 
-      dots: "pointer-events-none absolute inset-0 bg-[radial-gradient(rgba(148,163,184,0.22)_1px,transparent_1px)] bg-[size:18px_18px] opacity-40",
+      dots: "pointer-events-none absolute inset-0 bg-[radial-gradient(rgba(148,163,184,0.22)_1px,transparent_1px)] bg-[size:18px_18px] opacity-60",
     },
   },
 };

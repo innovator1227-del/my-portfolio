@@ -18,7 +18,7 @@ const Header = ({ heroMenu }) => {
           >
             <FaBars size={20} />
           </button>
-
+          <h1 className="font-bold text-2xl text-green-600">Tebie Tegenew</h1>
           {/* Desktop navigation */}
           <nav className="hidden items-center gap-2 md:flex">
             {heroMenu.map((item) => (
