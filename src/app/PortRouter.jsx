@@ -5,6 +5,7 @@ import Hero from "../components/pages/Hero";
 import About from "../components/pages/About";
 import All from "../components/All";
 import Skill from "../components/pages/Skill";
+import Project from "../components/pages/Project";
 
 const PortRouter = () => {
   return (
@@ -15,6 +16,7 @@ const PortRouter = () => {
             <Route path="/home" element={<Hero />} />
             <Route path="/about" element={<About />} />
             <Route path="/skill" element={<Skill />} />
+            <Route path="/project" element={<Project />} />
           </Route>
         </Route>
       </Routes>

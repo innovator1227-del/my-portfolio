@@ -10,7 +10,7 @@ const Header = ({ heroMenu }) => {
 
   return (
     <Theme>
-      <div className="w-full shadow-2xl font-serif">
+      <div className="w-full shadow-lg font-serif">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Mobile menu button */}
           <button
