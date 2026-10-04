@@ -5,7 +5,7 @@ import Hero from "../components/pages/Hero";
 import About from "../components/pages/About";
 import All from "../components/All";
 import Skill from "../components/pages/Skill";
-import Project from "../components/pages/Project";
+import Project from "../components/pages/projects/Project";
 
 const PortRouter = () => {
   return (

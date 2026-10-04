@@ -20,6 +20,7 @@ import { RiTailwindCssFill } from "react-icons/ri";
 import { IoLogoHtml5 } from "react-icons/io";
 import { DiMongodb } from "react-icons/di";
 import { SiExpress, SiPostman } from "react-icons/si";
+import { cardVariants, containerVariants } from "../../utils/Animation";
 
 const skillGroups = [
   {
@@ -78,36 +79,12 @@ const skillGroups = [
   },
 ];
 
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.12,
-    },
-  },
-};
-
-const cardVariants = {
-  hidden: {
-    opacity: 0,
-    y: 40,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut",
-    },
-  },
-};
-
 const Skills = () => {
   const theme = useThemeStore((state) => state.theme);
   return (
     <Theme>
       <section
-        id="skills"
+        id="skill"
         className="relative overflow-hidden px-6 py-20 sm:px-8 lg:px-12"
       >
         {/* Background decoration */}

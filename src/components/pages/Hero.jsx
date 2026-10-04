@@ -32,7 +32,10 @@ const socialLinks = [
 const Hero = () => {
   const theme = useThemeStore((state) => state.theme);
   return (
-    <section className="flex min-h-[calc(90vh-40px)] items-center px-6 py-12">
+    <section
+      id="home"
+      className="flex min-h-[calc(90vh-40px)] items-center px-6 py-12"
+    >
       <div className="mx-auto flex w-full max-w-7xl flex-col-reverse items-center justify-center gap-12 lg:flex-row lg:justify-between lg:gap-20">
         <div className="flex w-full max-w-2xl flex-col items-center text-center lg:items-start lg:text-left">
           <span className="w-fit rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">

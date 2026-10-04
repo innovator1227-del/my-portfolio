@@ -1,8 +1,8 @@
-import React from "react";
 import Hero from "./pages/Hero";
 import About from "./pages/About";
 import Skill from "./pages/Skill";
-import Project from "./pages/Project";
+import Project from "./pages/projects/Project";
+import { projects } from "./pages/projects/ProData";
 
 const All = () => {
   return (
@@ -10,7 +10,7 @@ const All = () => {
       <Hero path={"/hero"} />
       <About path={"/about"} />
       <Skill />
-      <Project />
+      <Project projects={projects} />
     </div>
   );
 };
