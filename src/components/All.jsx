@@ -3,6 +3,7 @@ import About from "./pages/About";
 import Skill from "./pages/Skill";
 import Project from "./pages/projects/Project";
 import { projects } from "./pages/projects/ProData";
+import Education from "./pages/Education";
 
 const All = () => {
   return (
@@ -11,6 +12,7 @@ const All = () => {
       <About path={"/about"} />
       <Skill />
       <Project projects={projects} />
+      <Education />
     </div>
   );
 };
