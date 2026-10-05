@@ -8,8 +8,10 @@ import {
   X,
 } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
+import useThemeStore from "../../../stores/themeStore";
 
 const Detail = ({ project, onClose }) => {
+  const theme = useThemeStore((state) => state.theme);
   return (
     <AnimatePresence>
       {project && (
@@ -18,7 +20,7 @@ const Detail = ({ project, onClose }) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={() => onClose()}
-          className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-slate-950/70 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto p-4 backdrop-blur-sm"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.94, y: 30 }}
@@ -26,7 +28,7 @@ const Detail = ({ project, onClose }) => {
             exit={{ opacity: 0, scale: 0.94, y: 30 }}
             transition={{ duration: 0.3 }}
             onClick={(event) => event.stopPropagation()}
-            className="relative my-8 w-full max-w-3xl overflow-hidden rounded-3xl border border-white/10 bg-white shadow-2xl dark:bg-slate-900"
+            className={`relative my-8 w-full max-w-3xl overflow-hidden rounded-3xl shadow-2xl ${theme === "dark" ? "bg-slate-900" : "bg-slate-100"} `}
           >
             {/* Modal header */}
             <div
@@ -40,15 +42,15 @@ const Detail = ({ project, onClose }) => {
                 <X size={20} />
               </button>
 
-              <p className="text-xs font-semibold uppercase tracking-widest text-white/70">
+              <p className="text-xs font-semibold uppercase tracking-widest">
                 {project.category}
               </p>
 
-              <h2 className="mt-2 text-3xl font-bold text-white sm:text-4xl">
+              <h2 className="mt-2 text-3xl font-bold sm:text-4xl">
                 {project.title}
               </h2>
 
-              <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-md">
+              <div className="mt-4 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium backdrop-blur-md">
                 <CheckCircle2 size={14} />
                 {project.status}
               </div>
@@ -60,14 +62,10 @@ const Detail = ({ project, onClose }) => {
                 <div className="mb-2 flex items-center gap-2">
                   <Code2 size={18} className="text-green-600" />
 
-                  <h3 className="font-semibold text-slate-900 dark:text-white">
-                    About the Project
-                  </h3>
+                  <h3 className="font-semibold">About the Project</h3>
                 </div>
 
-                <p className="leading-7 text-slate-600 dark:text-slate-300">
-                  {project.longDescription}
-                </p>
+                <p className="leading-7">{project.longDescription}</p>
               </div>
 
               {/* Features */}
@@ -75,16 +73,14 @@ const Detail = ({ project, onClose }) => {
                 <div className="mb-3 flex items-center gap-2">
                   <Layers3 size={18} className="text-green-600" />
 
-                  <h3 className="font-semibold text-slate-900 dark:text-white">
-                    Key Features
-                  </h3>
+                  <h3 className="font-semibold">Key Features</h3>
                 </div>
 
                 <div className="grid gap-3 sm:grid-cols-2">
                   {project.features.map((feature) => (
                     <div
                       key={feature}
-                      className="flex items-start gap-2 rounded-xl bg-slate-50 p-3 text-sm text-slate-600 dark:bg-slate-800/70 dark:text-slate-300"
+                      className={`flex items-start gap-2 rounded-xl p-3 text-sm shadow-lg ${theme === "dark" ? "border border-slate-700" : "border border-slate-300"} `}
                     >
                       <CheckCircle2
                         size={17}
@@ -101,16 +97,14 @@ const Detail = ({ project, onClose }) => {
                 <div className="mb-3 flex items-center gap-2">
                   <CalendarDays size={18} className="text-green-600" />
 
-                  <h3 className="font-semibold text-slate-900 dark:text-white">
-                    Technologies
-                  </h3>
+                  <h3 className="font-semibold">Technologies</h3>
                 </div>
 
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((technology) => (
                     <span
                       key={technology}
-                      className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-1.5 text-sm font-medium text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300"
+                      className={`rounded-lg px-3 py-1.5 text-sm font-medium  ${theme === "dark" ? "bg-slate-800/80 border border-slate-600 text-slate-300" : "bg-slate-300 border border-slate-400 text-slate-600"} `}
                     >
                       {technology}
                     </span>
@@ -125,7 +119,7 @@ const Detail = ({ project, onClose }) => {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition-colors hover:border-green-500 hover:text-green-600 dark:border-slate-700 dark:text-slate-300"
+                    className={`inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition-colors hover:border-green-500 cursor-pointer hover:text-green-600 ${theme === "dark" ? "border border-slate-700" : "border border-slate-400"} `}
                   >
                     <FaGithub size={18} />
                     GitHub
@@ -137,7 +131,7 @@ const Detail = ({ project, onClose }) => {
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-green-700 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-green-800"
+                    className={`inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold cursor-pointer transition-colors hover:text-green-600 hover:border-green-500 ${theme === "dark" ? "border border-slate-700" : "border border-slate-400"} `}
                   >
                     <ExternalLink size={18} />
                     Live Demo
@@ -146,7 +140,7 @@ const Detail = ({ project, onClose }) => {
 
                 <button
                   onClick={() => onClose()}
-                  className="inline-flex items-center justify-center rounded-xl bg-slate-100 px-5 py-3 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
+                  className={`inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold transition-colors cursor-pointer hover:text-red-500 hover:border-red-400  ${theme === "dark" ? "bg-slate-800" : "bg-slate-300"} `}
                 >
                   Close
                 </button>

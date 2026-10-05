@@ -15,7 +15,7 @@ export const projects = [
       "exponetial calculation",
     ],
     github: "https://github.com/innovator1227-del/Tebie-Tech",
-    demo: "#",
+    demo: "https://innovator1227-del.github.io/Tebie-Tech/normal/index.html",
     status: "In Development",
     gradient: "from-green-500 to-yellow-500",
   },

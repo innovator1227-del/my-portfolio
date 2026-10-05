@@ -70,7 +70,7 @@ const Project = ({ projects }) => {
                   ease: "linear",
                 },
               }}
-              className="mt-4 bg-gradient-to-r from-green-600 via-blue-600 to-purple-600 bg-[length:300%_auto] bg-clip-text text-4xl font-bold text-transparent sm:text-5xl"
+              className="mt-4 bg-gradient-to-r from-green-700 via-yellow-700 to-purple-500 bg-[length:300%_auto] bg-clip-text text-4xl font-bold text-transparent sm:text-5xl"
             >
               Featured Projects
             </motion.h2>
@@ -98,7 +98,6 @@ const Project = ({ projects }) => {
                 whileHover={{ y: -8 }}
                 className={`group relative flex flex-col overflow-hidden rounded-3xl shadow-sm backdrop-blur-md transition-shadow duration-300 hover:shadow-2xl ${theme === "dark" ? "bg-slate-900/60 border border-slate-700" : "bg-slate-200 border border-slate-400"} `}
               >
-                {/* Project visual */}
                 <div
                   className={`relative h-44 overflow-hidden bg-gradient-to-br ${project.gradient}`}
                 >
@@ -123,7 +122,6 @@ const Project = ({ projects }) => {
                     <Layers3 size={28} />
                   </motion.div>
 
-                  {/* Status */}
                   <div className="absolute right-5 top-5">
                     <span className="rounded-full bg-black/20 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-md">
                       {project.status}
@@ -141,7 +139,6 @@ const Project = ({ projects }) => {
                   </div>
                 </div>
 
-                {/* Card content */}
                 <div className="flex flex-1 flex-col p-6">
                   <p
                     className={`line-clamp-3 text-sm leading-7 ${theme === "dark" ? "text-slate-300" : "text-slate-600"} `}
