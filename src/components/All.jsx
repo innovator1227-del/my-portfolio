@@ -6,6 +6,8 @@ import EducationExperience from "./pages/experiance/Education";
 import { journey } from "./pages/experiance/ExpData";
 import { skillGroups } from "./pages/skills/SkilData";
 import Skills from "./pages/skills/Skill";
+import Contact from "./pages/contacts/Contact";
+import Footer from "./pages/Footer";
 
 const All = () => {
   return (
@@ -15,6 +17,8 @@ const All = () => {
       <Skills skillGroups={skillGroups} />
       <Project projects={projects} />
       <EducationExperience journey={journey} />
+      <Contact />
+      <Footer />
     </div>
   );
 };
