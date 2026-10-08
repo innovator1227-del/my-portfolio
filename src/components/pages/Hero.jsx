@@ -19,7 +19,7 @@ const socialLinks = [
   },
   {
     name: "Email",
-    href: "https://accounts.google.com/ttegenew@gmail.com",
+    href: "https://mail.google.com/mail/?view=cm&fs=1&to=ttegenew@gmail.com",
     icon: Mail,
   },
   {

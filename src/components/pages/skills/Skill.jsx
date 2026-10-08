@@ -8,7 +8,7 @@ const Skills = ({ skillGroups }) => {
   return (
     <Theme>
       <section
-        id="skill"
+        id="skills"
         className="relative overflow-hidden px-6 py-20 sm:px-8 lg:px-12"
       >
         {/* Background decoration */}

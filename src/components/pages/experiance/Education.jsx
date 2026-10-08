@@ -9,7 +9,7 @@ const EducationExperience = ({ journey }) => {
   return (
     <Theme>
       <section
-        id="journey"
+        id="experience"
         className="relative overflow-hidden px-5 py-20 sm:px-8 lg:px-12"
       >
         {/* Background glow */}
@@ -50,7 +50,7 @@ const EducationExperience = ({ journey }) => {
           >
             <span className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-2 text-sm font-medium text-blue-500">
               <CalendarDays size={15} />
-              My Journey
+              My Experience
             </span>
 
             <h2 className="mt-5 text-3xl font-bold sm:text-4xl lg:text-5xl">

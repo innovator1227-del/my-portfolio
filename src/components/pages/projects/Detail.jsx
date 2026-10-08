@@ -1,5 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import {
+  ArrowLeft,
+  ArrowRight,
   CalendarDays,
   CheckCircle2,
   Code2,
@@ -9,9 +11,15 @@ import {
 } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import useThemeStore from "../../../stores/themeStore";
+import { useEffect, useState } from "react";
 
 const Detail = ({ project, onClose }) => {
   const theme = useThemeStore((state) => state.theme);
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    setCurrentImage(0);
+  }, [project]);
   return (
     <AnimatePresence>
       {project && (
@@ -31,29 +39,97 @@ const Detail = ({ project, onClose }) => {
             className={`relative my-8 w-full max-w-3xl overflow-hidden rounded-3xl shadow-2xl ${theme === "dark" ? "bg-slate-900" : "bg-slate-100"} `}
           >
             {/* Modal header */}
-            <div
-              className={`relative overflow-hidden bg-gradient-to-br ${project.gradient} px-6 py-10 sm:px-8`}
-            >
-              <button
-                onClick={() => onClose()}
-                aria-label="Close project details"
-                className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full bg-black/20 text-white backdrop-blur-md transition-colors hover:bg-black/40"
-              >
-                <X size={20} />
-              </button>
+            <div className="relative overflow-hidden">
+              {project.images?.length > 0 ? (
+                <div className="relative h-64 sm:h-80">
+                  <img
+                    src={project.images[currentImage]}
+                    alt={`${project.title} screenshot`}
+                    className="h-full w-full object-contain transition-transform duration-500"
+                  />
 
-              <p className="text-xs font-semibold uppercase tracking-widest">
-                {project.category}
-              </p>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-              <h2 className="mt-2 text-3xl font-bold sm:text-4xl">
-                {project.title}
-              </h2>
+                  {project.images.length > 1 && (
+                    <>
+                      <button
+                        onClick={() =>
+                          setCurrentImage(
+                            (currentImage - 1 + project.images.length) %
+                              project.images.length,
+                          )
+                        }
+                        className="absolute left-4 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-md"
+                      >
+                        <ArrowLeft size={20} />
+                      </button>
 
-              <div className="mt-4 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium backdrop-blur-md">
-                <CheckCircle2 size={14} />
-                {project.status}
-              </div>
+                      <button
+                        onClick={() =>
+                          setCurrentImage(
+                            (currentImage + 1) % project.images.length,
+                          )
+                        }
+                        className="absolute right-4 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-md"
+                      >
+                        <ArrowRight size={20} />
+                      </button>
+
+                      <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
+                        {project.images.map((_, index) => (
+                          <button
+                            key={index}
+                            onClick={() => setCurrentImage(index)}
+                            className={`h-2 rounded-full ${
+                              currentImage === index
+                                ? "w-6 bg-white"
+                                : "w-2 bg-white/50"
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    </>
+                  )}
+
+                  <div className="absolute bottom-6 left-6 text-white sm:left-8">
+                    <p className="text-xs font-semibold uppercase tracking-widest text-white/70">
+                      {project.category}
+                    </p>
+
+                    <h2 className="mt-2 text-3xl font-bold sm:text-4xl">
+                      {project.title}
+                    </h2>
+                  </div>
+
+                  <button
+                    onClick={onClose}
+                    aria-label="Close project details"
+                    className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-md hover:bg-black/70"
+                  >
+                    <X size={20} />
+                  </button>
+                </div>
+              ) : (
+                // Keep your existing gradient header here as fallback
+                <div
+                  className={`relative bg-gradient-to-br ${project.gradient} px-6 py-10 sm:px-8`}
+                >
+                  <button
+                    onClick={onClose}
+                    className="absolute right-5 top-5 text-white"
+                  >
+                    <X size={20} />
+                  </button>
+
+                  <p className="text-xs font-semibold uppercase tracking-widest">
+                    {project.category}
+                  </p>
+
+                  <h2 className="mt-2 text-3xl font-bold sm:text-4xl">
+                    {project.title}
+                  </h2>
+                </div>
+              )}
             </div>
 
             {/* Modal body */}

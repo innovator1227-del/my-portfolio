@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { ArrowUpRight, Code2, Layers3 } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  ArrowUpRight,
+  Code2,
+  Layers3,
+} from "lucide-react";
 import { motion } from "framer-motion";
 import Theme from "../../Theme";
 import { FaGithub } from "react-icons/fa";
@@ -10,7 +16,7 @@ import { cardVariants, containerVariants } from "../../../utils/Animation";
 const Project = ({ projects }) => {
   const theme = useThemeStore((state) => state.theme);
   const [selectedProject, setSelectedProject] = useState(null);
-
+  const [imageIndexes, setImageIndexes] = useState({});
   return (
     <Theme>
       <section
@@ -98,45 +104,133 @@ const Project = ({ projects }) => {
                 whileHover={{ y: -8 }}
                 className={`group relative flex flex-col overflow-hidden rounded-3xl shadow-sm backdrop-blur-md transition-shadow duration-300 hover:shadow-2xl ${theme === "dark" ? "bg-slate-900/60 border border-slate-700" : "bg-slate-200 border border-slate-400"} `}
               >
-                <div
-                  className={`relative h-44 overflow-hidden bg-gradient-to-br ${project.gradient}`}
-                >
-                  {/* Decorative shapes */}
-                  <motion.div
-                    animate={{
-                      rotate: [0, 8, 0],
-                      scale: [1, 1.1, 1],
-                    }}
-                    transition={{
-                      duration: 5,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                    className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/10 blur-sm"
-                  />
+                <div className="relative h-52 overflow-hidden">
+                  {project.images?.length > 0 ? (
+                    <>
+                      {/* Current Image */}
+                      <img
+                        src={project.images[imageIndexes[project.id] || 0]}
+                        alt={`${project.title} screenshot`}
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
 
-                  <motion.div
-                    whileHover={{ scale: 1.1, rotate: 3 }}
-                    className="absolute left-6 top-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/20 bg-white/15 text-white shadow-lg backdrop-blur-md"
-                  >
-                    <Layers3 size={28} />
-                  </motion.div>
+                      {/* Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
 
-                  <div className="absolute right-5 top-5">
-                    <span className="rounded-full bg-black/20 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-md">
-                      {project.status}
-                    </span>
-                  </div>
+                      {/* Status */}
+                      <div className="absolute right-5 top-5">
+                        <span className="rounded-full bg-black/40 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-md">
+                          {project.status}
+                        </span>
+                      </div>
 
-                  <div className="absolute bottom-5 left-6">
-                    <p className="text-xs font-medium uppercase tracking-wider text-white/75">
-                      {project.category}
-                    </p>
+                      {/* Previous */}
+                      {project.images.length > 1 && (
+                        <button
+                          type="button"
+                          onClick={(event) => {
+                            event.stopPropagation();
 
-                    <h3 className="mt-1 text-xl font-bold text-white">
-                      {project.title}
-                    </h3>
-                  </div>
+                            setImageIndexes((prev) => ({
+                              ...prev,
+                              [project.id]:
+                                ((prev[project.id] || 0) -
+                                  1 +
+                                  project.images.length) %
+                                project.images.length,
+                            }));
+                          }}
+                          className="absolute left-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-md transition hover:bg-black/70"
+                          aria-label="Previous image"
+                        >
+                          <ArrowLeft size={17} />
+                        </button>
+                      )}
+
+                      {/* Next */}
+                      {project.images.length > 1 && (
+                        <button
+                          type="button"
+                          onClick={(event) => {
+                            event.stopPropagation();
+
+                            setImageIndexes((prev) => ({
+                              ...prev,
+                              [project.id]:
+                                ((prev[project.id] || 0) + 1) %
+                                project.images.length,
+                            }));
+                          }}
+                          className="absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-md transition hover:bg-black/70"
+                          aria-label="Next image"
+                        >
+                          <ArrowRight size={17} />
+                        </button>
+                      )}
+
+                      {/* Dots */}
+                      {project.images.length > 1 && (
+                        <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-1.5">
+                          {project.images.map((_, index) => (
+                            <button
+                              key={index}
+                              type="button"
+                              onClick={(event) => {
+                                event.stopPropagation();
+
+                                setImageIndexes((prev) => ({
+                                  ...prev,
+                                  [project.id]: index,
+                                }));
+                              }}
+                              className={`h-2 rounded-full transition-all ${
+                                (imageIndexes[project.id] || 0) === index
+                                  ? "w-5 bg-white"
+                                  : "w-2 bg-white/50"
+                              }`}
+                              aria-label={`Go to image ${index + 1}`}
+                            />
+                          ))}
+                        </div>
+                      )}
+
+                      {/* Project title */}
+                      <div className="absolute bottom-5 left-6">
+                        <p className="text-xs font-medium uppercase tracking-wider text-white/75">
+                          {project.category}
+                        </p>
+
+                        <h3 className="mt-1 text-xl font-bold text-white">
+                          {project.title}
+                        </h3>
+                      </div>
+                    </>
+                  ) : (
+                    /* Gradient fallback */
+                    <div
+                      className={`relative h-full bg-gradient-to-br ${project.gradient}`}
+                    >
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <Layers3 size={55} className="text-white/30" />
+                      </div>
+
+                      <div className="absolute right-5 top-5">
+                        <span className="rounded-full bg-black/20 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-md">
+                          {project.status}
+                        </span>
+                      </div>
+
+                      <div className="absolute bottom-5 left-6">
+                        <p className="text-xs font-medium uppercase tracking-wider text-white/75">
+                          {project.category}
+                        </p>
+
+                        <h3 className="mt-1 text-xl font-bold text-white">
+                          {project.title}
+                        </h3>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 <div className="flex flex-1 flex-col p-6">

@@ -1,8 +1,8 @@
 export const projects = [
   {
     id: 1,
-    title: "caculator",
-    category: "calculation",
+    title: "Caculator",
+    category: "Web-application",
     description:
       "Builing normal and scientific calculator from simple math calculation to advanced trigonometgy calculation.",
     longDescription:
@@ -17,7 +17,7 @@ export const projects = [
     github: "https://github.com/innovator1227-del/Tebie-Tech",
     demo: "https://innovator1227-del.github.io/Tebie-Tech/normal/index.html",
     status: "In Development",
-    gradient: "from-green-500 to-yellow-500",
+    images: ["/images/normal.jpg", "/images/sceintific.jpg"],
   },
 
   {
@@ -47,7 +47,12 @@ export const projects = [
     github: "https://github.com/innovator1227-del/Hahu-Frontend",
     demo: "#",
     status: "In Development",
-    gradient: "from-green-500 to-emerald-600",
+    images: [
+      "/images/hero.jpg",
+      "/images/home.jpg",
+      "/images/browse.jpg",
+      "/images/list.jpg",
+    ],
   },
 
   {
@@ -77,7 +82,7 @@ export const projects = [
     github: "https://github.com/MahletBernosPM/GEBEREW---MARKET",
     demo: "#",
     status: "In Development",
-    gradient: "from-blue-500 to-cyan-500",
+    images: ["/images/farm.jpg", "/images/my.jpg", "/images/create.jpg"],
   },
 
   {
@@ -106,7 +111,13 @@ export const projects = [
     github: "https://github.com/innovator1227-del/HAHU-RENTAL.BiT",
     demo: "#",
     status: "In Development",
-    gradient: "from-orange-500 to-red-500",
+    images: [
+      "/images/car.jpg",
+      "/images/login.jpg",
+      "/images/rent.jpg",
+      "/images/attend.jpg",
+      "/images/pay.jpg",
+    ],
   },
 
   {
@@ -137,7 +148,12 @@ export const projects = [
       "https://github.com/innovator1227-del/Hahu-Frontend/tree/master/Admin",
     demo: "#",
     status: "In Development",
-    gradient: "from-purple-500 to-indigo-600",
+    images: [
+      "/images/adlogin.jpg",
+      "/images/dashboard.jpg",
+      "/images/manage.jpg",
+      "/images/admin.jpg",
+    ],
   },
 
   {
@@ -161,7 +177,7 @@ export const projects = [
       "https://github.com/innovator1227-del/Hahu-Frontend/tree/master/src/features/chats",
     demo: "#",
     status: "In Development",
-    gradient: "from-pink-500 to-rose-500",
+    images: ["/images/chat.jpg", "/images/send.jpg"],
   },
 
   {

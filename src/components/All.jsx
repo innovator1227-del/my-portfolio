@@ -11,9 +11,9 @@ import Footer from "./pages/Footer";
 
 const All = () => {
   return (
-    <div className="flex-col items-center justify-center">
-      <Hero path={"/hero"} />
-      <About path={"/about"} />
+    <div>
+      <Hero />
+      <About />
       <Skills skillGroups={skillGroups} />
       <Project projects={projects} />
       <EducationExperience journey={journey} />
